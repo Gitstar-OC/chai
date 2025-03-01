@@ -1,4 +1,5 @@
 import { Search } from "lucide-react"
+import ExploreBots from "@/components/explore-bots"
 
 export default function Home() {
 
@@ -19,6 +20,8 @@ export default function Home() {
                 aria-label="Search for Bots"
               />
             </div>
+            
+        <ExploreBots />
           </div>
     </main>
   )
