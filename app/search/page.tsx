@@ -4,9 +4,9 @@ import ExploreBots from "@/components/explore-bots"
 export default function Home() {
 
   return (
-    <main className="flex flex-col items-center pt-10 bg-background">
-          <div className="w-full max-w-xl">
-            <div className="relative">
+    <main className="flex flex-col items-center mt-10 w-full pt-10 bg-background">
+          <div className="w-full max-w-[21rem] sm:max-w-[25rem] md:max-w-[31rem] lg:max-w-2xl xl:max-w-5xl">
+            <div className="relative flex items-center max-w-xl">
               <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-neutral-500 dark:text-neutral-400">
                 <Search className="h-5 w-5" />
               </div>
@@ -20,8 +20,7 @@ export default function Home() {
                 aria-label="Search for Bots"
               />
             </div>
-            
-        <ExploreBots />
+          <ExploreBots />
           </div>
     </main>
   )

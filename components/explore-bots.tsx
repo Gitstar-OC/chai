@@ -1,4 +1,5 @@
 import Image from "next/image"
+import "./style.css"
 
 const botCategories = [
   {
@@ -76,8 +77,8 @@ const botCategories = [
 
 export default function ExploreBots() {
   return (
-    <div className="w-full bg-white dark:bg-black font-sans">
-      <div className="max-w-7xl mx-auto py-8">
+    <div className="w-full  mt-10 font-sans">
+      <div className="max-w-6xl py-8">
         <h2 className="text-2xl mb-4 text-neutral-800 dark:text-neutral-200">Explore Bots</h2>
         <p className="text-neutral-700 dark:text-neutral-300 text-sm md:text-base max-w-2xl mb-12">
           Discover a wide range of AI-powered bots to assist you with various tasks and enhance your productivity.
