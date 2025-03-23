@@ -3,7 +3,7 @@
 import type React from "react"
 
 import { useState } from "react"
-import { Pencil, Globe, Lock } from "lucide-react"
+import { Pencil, Globe, Lock, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -150,42 +150,85 @@ export default function CharacterCreation() {
               </div>
             </div>
 
-            <div className="space-y-2">
-              <Label className="text-foreground/80">Visibility</Label>
-              <Popover>
-                <PopoverTrigger asChild>
-                  <Button variant="outline" className="w-full justify-start bg-background border-input text-foreground">
-                    {visibility === "public" ? (
-                      <>
-                        <Globe className="mr-2 h-4 w-4" />
-                        <span>Public</span>
-                      </>
-                    ) : (
-                      <>
-                        <Lock className="mr-2 h-4 w-4" />
-                        <span>Private</span>
-                      </>
-                    )}
-                  </Button>
-                </PopoverTrigger>
-                <PopoverContent className="w-48 bg-popover border-input">
-                  <RadioGroup value={visibility} onValueChange={setVisibility}>
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="public" id="public" />
-                      <Label htmlFor="public">Public</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="private" id="private" />
-                      <Label htmlFor="private">Private</Label>
-                    </div>
-                  </RadioGroup>
-                </PopoverContent>
-              </Popover>
-            </div>
+            <div className="flex flex-col space-y-8">
+              <div className="flex justify-start">
+                <div className="flex flex-col space-y-3 w-full md:w-1/2">
+                  <Label className="text-foreground/80 text-sm font-medium">Visibility</Label>
+                  <Popover>
+                    <PopoverTrigger asChild>
+                      <Button
+                        variant="outline"
+                        className="w-full justify-between bg-background border-input text-foreground hover:bg-accent/30 focus-visible:ring-2 focus-visible:ring-ring transition-all group"
+                      >
+                        <span className="flex items-center">
+                          {visibility === "public" ? (
+                            <>
+                              <Globe className="mr-2 h-4 w-4 text-emerald-500" />
+                              <span>Public</span>
+                            </>
+                          ) : (
+                            <>
+                              <Lock className="mr-2 h-4 w-4 text-amber-500" />
+                              <span>Private</span>
+                            </>
+                          )}
+                        </span>
+                        <ChevronDown className="h-4 w-4 text-foreground/60 group-hover:text-foreground/80 transition-colors ml-2" />
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-72 bg-popover border border-input rounded-lg shadow-lg p-0 overflow-hidden">
+                      <div className="p-3 border-b border-border">
+                        <h4 className="font-medium text-sm">Who can see your character?</h4>
+                        <p className="text-xs text-muted-foreground mt-1">Choose who can discover and chat with your AI character</p>
+                      </div>
+                      <RadioGroup value={visibility} onValueChange={setVisibility} className="p-1">
+                        <div
+                          onClick={() => setVisibility("public")}
+                          className={`flex items-start space-x-3 p-3 rounded-md cursor-pointer transition-colors ${visibility === "public" ? "bg-accent/50" : "hover:bg-accent/30"}`}
+                        >
+                          <RadioGroupItem value="public" id="public" className="mt-1 text-emerald-500" />
+                          <div className="space-y-1.5">
+                            <div className="flex items-center">
+                              <span className="text-foreground font-medium">
+                                Public
+                              </span>
+                              <span className="ml-2 text-xs py-0.5 px-2 bg-emerald-500/10 text-emerald-500 rounded-full">Recommended</span>
+                            </div>
+                            <p className="text-xs text-muted-foreground">Your character will appear in search results and be available for anyone to chat with</p>
+                          </div>
+                        </div>
 
-            <Button className="w-full bg-primary text-primary-foreground h-12 hover:bg-primary/90">
-              Create Chat AI
-            </Button>
+                        <div
+                          onClick={() => setVisibility("private")}
+                          className={`flex items-start space-x-3 p-3 rounded-md cursor-pointer transition-colors ${visibility === "private" ? "bg-accent/50" : "hover:bg-accent/30"}`}
+                        >
+                          <RadioGroupItem value="private" id="private" className="mt-1 text-amber-500" />
+                          <div className="space-y-1.5">
+                            <span className="text-foreground font-medium">
+                              Private
+                            </span>
+                            <p className="text-xs text-muted-foreground">Your character will only be visible to you and people you share the link with</p>
+                          </div>
+                        </div>
+                      </RadioGroup>
+                    </PopoverContent>
+                  </Popover>
+                </div>
+              </div>
+
+              {/* Create Chat AI Button Section */}
+              <div className="flex justify-end pt-4">
+                <div className="relative group">
+                  <div className="absolute -inset-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-rose-500 rounded-xl blur opacity-70 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <Button
+                    size="lg"
+                    className="relative px-10 py-5 bg-background hover:bg-background/95 text-foreground rounded-xl border border-input shadow-md flex items-center justify-center gap-2 font-semibold text-base transition-transform group-hover:scale-105"
+                  >
+                    <span>Create Chat AI</span>
+                  </Button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

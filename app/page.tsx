@@ -1,11 +1,11 @@
 "use client";
-import HeroGeometric from "@/components/hero-geometric";
+import Home from "@/components/home";
 
 export default function Page() {
- 
+  
   return (
-      <main className="relative">
-          <HeroGeometric />
+    <main className="relative">
+        <Home />
         </main>
 
   );

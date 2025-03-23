@@ -81,7 +81,7 @@ function ElegantShape({
   )
 }
 
-export default function HeroGeometric() {
+export default function Home() {
   const { theme } = useTheme()
   const [mounted, setMounted] = useState(false)
 
@@ -227,7 +227,8 @@ export default function HeroGeometric() {
             className="flex flex-col sm:flex-row justify-center gap-4 mb-12"
           >
             <a
-              href="#"
+              href="https://apps.apple.com/us/app/chai-social-ai-platform-chat/id1544750895"
+              target="_blank"
               className="flex items-center border-neutral-300 dark:border-neutral-400 border-[1px] justify-center gap-3 px-6 py-3.5 bg-white dark:bg-black text-black dark:text-white rounded-full hover:opacity-90 transition-opacity shadow-lg"
             >
               <FaApple className="h-6 w-6" />
@@ -237,7 +238,8 @@ export default function HeroGeometric() {
               </div>
             </a>
             <a
-              href="#"
+              href="https://play.google.com/store/apps/details?id=com.Beauchamp.Messenger.external"
+              target="_blank"
               className="flex border-neutral-300 dark:border-neutral-400 border-[1px] items-center justify-center gap-3 px-6 py-3.5 bg-white dark:bg-black text-black dark:text-white rounded-full hover:opacity-90 transition-opacity shadow-lg"
             >
               <FaAndroid className="h-6 w-6" />

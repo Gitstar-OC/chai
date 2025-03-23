@@ -278,19 +278,19 @@ export default function EmptyChatHistory() {
           Your chat history will appear here. Start a conversation to collaborate, share ideas, or get assistance.
         </motion.p>
         <motion.div
-  className="relative group"
-  variants={itemVariants}
-  custom={6}
->
-  <div className="absolute -inset-0.5 bg-gradient-to-r from-indigo-500 to-rose-500 rounded-lg blur opacity-75 dark:opacity-60 group-hover:opacity-100 group-hover:dark:opacity-80 transition duration-300"></div>
-  <Button
-    size="lg"
-    className="relative px-8 py-6 bg-white hover:bg-white dark:bg-black dark:hover:bg-black text-black dark:text-white rounded-lg border border-transparent flex items-center gap-2  transition-shadow duration-300"
-  >
-    <MessageSquarePlus className="w-5 h-5 text-indigo-600 dark:text-rose-400" />
-    <span className="font-medium">Start a new conversation</span>
-  </Button>
-</motion.div>
+          className="relative group"
+          variants={itemVariants}
+          custom={6}
+        >
+          <div className="absolute -inset-0.5 bg-gradient-to-r from-indigo-500 to-rose-500 rounded-lg blur opacity-75 dark:opacity-60 group-hover:opacity-100 group-hover:dark:opacity-80 transition duration-300"></div>
+          <Button
+            size="lg"
+            className="relative px-8 py-6 bg-white hover:bg-white dark:bg-black dark:hover:bg-black text-black dark:text-white rounded-lg border border-transparent flex items-center gap-2  transition-shadow duration-300"
+          >
+            <MessageSquarePlus className="w-5 h-5 text-indigo-600 dark:text-rose-400" />
+            <span className="font-medium">Start a new conversation</span>
+          </Button>
+        </motion.div>
       </motion.div>
     </div>
   )
