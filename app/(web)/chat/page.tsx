@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { MessageSquarePlus } from "lucide-react"
 import { useEffect, useState } from "react"
-import { motion } from "framer-motion"
+import { motion, Variants } from "framer-motion"
 
 export default function EmptyChatHistory() {
   const [mounted, setMounted] = useState(false)
@@ -13,7 +13,7 @@ export default function EmptyChatHistory() {
     return () => { }
   }, [])
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -25,7 +25,7 @@ export default function EmptyChatHistory() {
     }
   }
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
@@ -34,7 +34,7 @@ export default function EmptyChatHistory() {
     }
   }
 
-  const leftChatVariants = {
+  const leftChatVariants: Variants = {
     hidden: { opacity: 0, x: -60 },
     visible: {
       opacity: 1,
@@ -46,7 +46,7 @@ export default function EmptyChatHistory() {
     }
   }
 
-  const rightChatVariants = {
+  const rightChatVariants: Variants = {
     hidden: { opacity: 0, x: 60 },
     visible: {
       opacity: 1,
@@ -58,7 +58,7 @@ export default function EmptyChatHistory() {
     }
   }
 
-  const textLineVariants = {
+  const textLineVariants: Variants = {
     hidden: { opacity: 0, width: 0 },
     visible: (custom: number) => ({
       opacity: 1,
@@ -71,7 +71,8 @@ export default function EmptyChatHistory() {
     })
   }
 
-  const floatVariants = {
+  const floatVariants: Variants = {
+    initial: {},  // Add an initial state
     float: {
       y: [0, -10, 0],
       transition: {
@@ -83,7 +84,8 @@ export default function EmptyChatHistory() {
     }
   }
 
-  const pulseVariants = {
+  const pulseVariants: Variants = {
+    initial: {},  // Add an initial state
     pulse: {
       scale: [1, 1.05, 1],
       opacity: [0.8, 1, 0.8],

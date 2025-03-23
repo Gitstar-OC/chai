@@ -49,7 +49,6 @@ export function FeedbackPopover() {
         <Popover open={open} onOpenChange={setOpen}>
           <PopoverTrigger asChild>
             <SidebarMenuButton
-              size="md"
               className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
             >
               <HiOutlineSpeakerphone className="h-4 w-4 mr-2" />
