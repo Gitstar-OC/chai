@@ -70,7 +70,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarHeader>
         <SidebarMenu>
           <div className="flex items-center w-full relative">
-            {/* Logo in a fixed container with absolute dimensions */}
+            
             <div className="w-[40px] h-[40px] flex-shrink-0">
               <Link href="/">
                 <Image

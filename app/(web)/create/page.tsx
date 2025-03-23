@@ -216,7 +216,7 @@ export default function CharacterCreation() {
                 </div>
               </div>
 
-              {/* Create Chat AI Button Section */}
+
               <div className="flex justify-end pt-4">
                 <div className="relative group">
                   <div className="absolute -inset-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-rose-500 rounded-xl blur opacity-70 group-hover:opacity-100 transition-opacity duration-300"></div>

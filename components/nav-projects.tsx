@@ -35,7 +35,7 @@ export function NavProjects({
                 href={item.url}
                 className="flex items-center gap-3 mt-2 md:gap-5 rounded-md transition-colors hover:bg-neutral-200 dark:hover:bg-neutral-800 px-3 py-2"
               >
-                {/* Apply more specific sizing with !important to override any conflicting styles */}
+
                 <div
                   className="flex-shrink-0 flex dark:hover:bg-none items-center justify-center"
                   style={{ minWidth: "24px", minHeight: "24px" }}

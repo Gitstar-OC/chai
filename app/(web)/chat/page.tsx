@@ -72,7 +72,7 @@ export default function EmptyChatHistory() {
   }
 
   const floatVariants: Variants = {
-    initial: {},  // Add an initial state
+    initial: {},  
     float: {
       y: [0, -10, 0],
       transition: {
@@ -85,7 +85,7 @@ export default function EmptyChatHistory() {
   }
 
   const pulseVariants: Variants = {
-    initial: {},  // Add an initial state
+    initial: {},  
     pulse: {
       scale: [1, 1.05, 1],
       opacity: [0.8, 1, 0.8],
@@ -164,10 +164,10 @@ export default function EmptyChatHistory() {
           <motion.div
             className="absolute rounded-2xl overflow-hidden p-4"
             style={{
-              right: "-2rem", // Moved further right
+              right: "-2rem", 
               top: "10rem",
-              height: "8rem",  // Original height (h-32)
-              width: "16.5rem", // 150% of original width
+              height: "8rem",  
+              width: "16.5rem",
               background: "linear-gradient(to right, rgba(217, 70, 219, 0.03) 0%, rgba(217, 70, 219, 0.02) 100%)",
               backdropFilter: "blur(8px)",
               boxShadow: "0 8px 32px rgba(217, 70, 219, 0.08), 0 0 0 1px rgba(217, 70, 219, 0.1)",

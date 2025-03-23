@@ -10,7 +10,7 @@ export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
       defaultTheme="system"
       enableSystem
       disableTransitionOnChange
-      enableColorScheme={false} // This prevents colorScheme style attribute issues
+      enableColorScheme={false} 
       {...props}
     >
       {children}
