@@ -219,7 +219,6 @@ export default function HeroGeometric() {
             </Link>
           </motion.div>
 
-          {/* App Download Buttons */}
           <motion.div
             custom={4}
             variants={fadeUpVariants}
