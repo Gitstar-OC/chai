@@ -41,7 +41,7 @@ export function FeedbackPopover() {
     }
     document.addEventListener("keydown", handleKeyDown)
     return () => document.removeEventListener("keydown", handleKeyDown)
-  }, [open, formState, feedback])
+  }, [open, formState, feedback ])
 
   return (
     <SidebarMenu>

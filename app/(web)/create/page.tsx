@@ -11,6 +11,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { cn } from "@/lib/utils"
+import Image from "next/image"
 
 export default function CharacterCreation() {
   const [name, setName] = useState("")
@@ -46,7 +47,7 @@ export default function CharacterCreation() {
                 onClick={() => document.getElementById("avatar-input")?.click()}
               >
                 {avatar ? (
-                  <img
+                  <Image
                     src={avatar || "/placeholder.svg"}
                     alt="Character avatar"
                     className="w-full h-full rounded-full object-cover"
