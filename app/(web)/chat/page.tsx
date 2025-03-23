@@ -60,7 +60,7 @@ export default function EmptyChatHistory() {
 
   const textLineVariants = {
     hidden: { opacity: 0, width: 0 },
-    visible: custom => ({
+    visible: (custom: number) => ({
       opacity: 1,
       width: "100%",
       transition: {
