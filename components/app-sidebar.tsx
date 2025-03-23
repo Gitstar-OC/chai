@@ -22,7 +22,7 @@ import {
   SidebarMenu,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
-import { motion } from "motion/react";
+import { FeedbackPopover } from "./feedback-popover";
 import Link from "next/link";
 
 const data = {
@@ -85,10 +85,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               </Link>
             </div>
 
-            {/* Spacer to push the trigger to the right */}
+
             <div className="flex-grow"></div>
 
-            {/* Absolutely positioned trigger that won't affect layout */}
+
             <div className="flex-shrink-0">
               {state === "expanded" && (
                 <SidebarTrigger className="w-10 h-10 z-10" />
@@ -103,9 +103,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarContent>
       <div className="border-t-[1px] mt-4 border-neutral-200 dark:border-neutral-800" />
         <NavProjects projects={data.projects} />
-        <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
+        <FeedbackPopover />
         <NavUser user={data.user} />
       </SidebarFooter>
     </Sidebar>

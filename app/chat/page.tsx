@@ -108,8 +108,12 @@ export default function EmptyChatHistory() {
         <div className="mb-10 w-80 h-80 relative">
 
           <motion.div
-            className="absolute left-4 top-12 h-36 w-52 rounded-2xl overflow-hidden p-4"
+            className="absolute rounded-2xl overflow-hidden p-4"
             style={{
+              left: "-2rem", 
+              top: "12px",
+              height: "9rem", 
+              width: "19.5rem",  
               background: "linear-gradient(to right, rgba(79, 70, 229, 0.03) 0%, rgba(79, 70, 229, 0.02) 100%)",
               backdropFilter: "blur(8px)",
               boxShadow: "0 8px 32px rgba(79, 70, 229, 0.08), 0 0 0 1px rgba(79, 70, 229, 0.1)",
@@ -156,8 +160,12 @@ export default function EmptyChatHistory() {
 
 
           <motion.div
-            className="absolute right-4 top-40 h-32 w-44 rounded-2xl overflow-hidden p-4"
+            className="absolute rounded-2xl overflow-hidden p-4"
             style={{
+              right: "-2rem", // Moved further right
+              top: "10rem",
+              height: "8rem",  // Original height (h-32)
+              width: "16.5rem", // 150% of original width
               background: "linear-gradient(to right, rgba(217, 70, 219, 0.03) 0%, rgba(217, 70, 219, 0.02) 100%)",
               backdropFilter: "blur(8px)",
               boxShadow: "0 8px 32px rgba(217, 70, 219, 0.08), 0 0 0 1px rgba(217, 70, 219, 0.1)",
@@ -206,9 +214,9 @@ export default function EmptyChatHistory() {
 
 
           {[
-            { pos: "left-24 top-0", size: "h-12 w-12", delay: 1.2, color: "bg-indigo-50 dark:bg-indigo-950", border: "border-indigo-200/50 dark:border-indigo-800/50" },
-            { pos: "right-8 top-12", size: "h-8 w-8", delay: 1.4, color: "bg-rose-50 dark:bg-rose-950", border: "border-rose-200/50 dark:border-rose-800/50" },
-            { pos: "left-12 bottom-4", size: "h-10 w-10", delay: 1.6, color: "bg-violet-50 dark:bg-violet-950", border: "border-violet-200/50 dark:border-violet-800/50" }
+            { pos: "left-24 top-0", size: "h-10 w-10", delay: 1.2, color: "bg-indigo-50 dark:bg-indigo-950", border: "border-indigo-200/50 dark:border-indigo-800/50" },
+            { pos: "right-8 top-12", size: "h-6 w-6", delay: 1.4, color: "bg-rose-50 dark:bg-rose-950", border: "border-rose-200/50 dark:border-rose-800/50" },
+            { pos: "left-12 bottom-4", size: "h-8 w-8", delay: 1.6, color: "bg-violet-50 dark:bg-violet-950", border: "border-violet-200/50 dark:border-violet-800/50" }
           ].map((elem, i) => (
             <motion.div
               key={i}
@@ -294,4 +302,4 @@ export default function EmptyChatHistory() {
       </motion.div>
     </div>
   )
-} 
+}

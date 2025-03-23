@@ -1,3 +1,5 @@
+"use client"
+
 import type * as React from "react"
 import type { LucideIcon } from "lucide-react"
 
@@ -8,6 +10,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
+import { FeedbackPopover } from "./feedback-popover"
 
 export function NavSecondary({
   items,
@@ -25,12 +28,16 @@ export function NavSecondary({
         <SidebarMenu>
           {items.map((item) => (
             <SidebarMenuItem key={item.title}>
-              <SidebarMenuButton asChild size="sm">
-                <a href={item.url}>
-                  <item.icon />
-                  <span>{item.title}</span>
-                </a>
-              </SidebarMenuButton>
+              {item.title === "Feedback" ? (
+                <FeedbackPopover />
+              ) : (
+                <SidebarMenuButton asChild size="sm">
+                  <a href={item.url}>
+                    <item.icon />
+                    <span>{item.title}</span>
+                  </a>
+                </SidebarMenuButton>
+              )}
             </SidebarMenuItem>
           ))}
         </SidebarMenu>
