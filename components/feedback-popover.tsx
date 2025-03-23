@@ -125,8 +125,8 @@ export function FeedbackPopover() {
                             <Button
                               size="sm"
                               type="submit"
-                              disabled={formState === "loading"}
                               className={cn(
+                                formState === "loading" && "cursor-not-allowed",
                                 "relative h-8 text-sm min-w-[120px]",
                                 "bg-background hover:bg-background dark:bg-background dark:hover:bg-background/90 text-foreground border border-input",
                                 "transition-all duration-300",
@@ -169,9 +169,6 @@ export function FeedbackPopover() {
                                   ) : (
                                     <>
                                       Send feedback
-                                      {/* <span className="ml-2 opacity-60 text-xs">
-                                        {navigator.platform.includes("Mac") ? "⌘" : "Ctrl"}+Enter
-                                      </span> */}
                                     </>
                                   )}
                                 </motion.span>
@@ -192,3 +189,26 @@ export function FeedbackPopover() {
   )
 }
 
+{/* Different Tick with red and blue as bg shadow */}
+
+// <div className="relative group">
+// <div className="absolute -inset-0.5 bg-gradient-to-r from-indigo-500 via-purple-500 to-rose-500 rounded-full blur opacity-75"></div>
+// <div className="relative h-12 w-12 rounded-full bg-background flex items-center justify-center">
+//   <svg
+//     width="28"
+//     height="28"
+//     viewBox="0 0 24 24"
+//     fill="none"
+//     xmlns="http://www.w3.org/2000/svg"
+//     className="text-foreground"
+//   >
+//     <path
+//       d="M20 6L9 17L4 12"
+//       stroke="currentColor"
+//       strokeWidth="3"
+//       strokeLinecap="round"
+//       strokeLinejoin="round"
+//     />
+//   </svg>
+// </div>
+// </div>
