@@ -3,7 +3,6 @@
 import { motion } from "framer-motion"
 import { Pacifico } from "next/font/google"
 import { cn } from "@/lib/utils"
-import { useTheme } from "next-themes"
 import { useEffect, useState } from "react"
 import Link from "next/link"
 import { Compass, MessageSquare, PenTool } from "lucide-react"
@@ -82,7 +81,6 @@ function ElegantShape({
 }
 
 export default function Home() {
-  const { theme } = useTheme()
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
