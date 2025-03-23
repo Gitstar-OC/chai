@@ -187,7 +187,6 @@ export default function Home() {
             </p>
           </motion.div>
 
-          {/* Navigation Links */}
           <motion.div
             custom={3}
             variants={fadeUpVariants}
@@ -197,21 +196,21 @@ export default function Home() {
           >
             <Link
               href="/search"
-              className="flex items-center gap-2 px-5 py-3 rounded-full bg-black/[0.05] dark:bg-white/[0.05] hover:bg-black/[0.1] dark:hover:bg-white/[0.1] transition-colors duration-200"
+              className="flex items-center gap-2 px-5 py-3 rounded-xl bg-black/[0.05] dark:bg-white/[0.05] hover:bg-black/[0.1] dark:hover:bg-white/[0.1] transition-colors duration-200"
             >
               <Compass className="h-5 w-5 text-indigo-600 dark:text-indigo-400" />
               <span className="font-medium">Explore</span>
             </Link>
             <Link
               href="/chat"
-              className="flex items-center gap-2 px-5 py-3 rounded-full bg-black/[0.05] dark:bg-white/[0.05] hover:bg-black/[0.1] dark:hover:bg-white/[0.1] transition-colors duration-200"
+              className="flex items-center gap-2 px-5 py-3 rounded-xl bg-black/[0.05] dark:bg-white/[0.05] hover:bg-black/[0.1] dark:hover:bg-white/[0.1] transition-colors duration-200"
             >
               <MessageSquare className="h-5 w-5 text-rose-600 dark:text-rose-400" />
               <span className="font-medium">Chats</span>
             </Link>
             <Link
               href="/create"
-              className="flex items-center gap-2 px-5 py-3 rounded-full bg-black/[0.05] dark:bg-white/[0.05] hover:bg-black/[0.1] dark:hover:bg-white/[0.1] transition-colors duration-200"
+              className="flex items-center gap-2 px-5 py-3 rounded-xl bg-black/[0.05] dark:bg-white/[0.05] hover:bg-black/[0.1] dark:hover:bg-white/[0.1] transition-colors duration-200"
             >
               <PenTool className="h-5 w-5 text-violet-600 dark:text-violet-400" />
               <span className="font-medium">Create</span>
@@ -228,7 +227,7 @@ export default function Home() {
             <a
               href="https://apps.apple.com/us/app/chai-social-ai-platform-chat/id1544750895"
               target="_blank"
-              className="flex items-center border-neutral-300 dark:border-neutral-400 border-[1px] justify-center gap-3 px-6 py-3.5 bg-white dark:bg-black text-black dark:text-white rounded-full hover:opacity-90 transition-opacity shadow-lg"
+              className="flex items-center border-neutral-300 dark:border-neutral-400 border-[1px] justify-center gap-3 px-6 py-3.5 bg-white dark:bg-black text-black dark:text-white rounded-2xl hover:opacity-90 transition-opacity shadow-lg"
             >
               <FaApple className="h-6 w-6" />
               <div className="flex flex-col items-start">
@@ -239,7 +238,7 @@ export default function Home() {
             <a
               href="https://play.google.com/store/apps/details?id=com.Beauchamp.Messenger.external"
               target="_blank"
-              className="flex border-neutral-300 dark:border-neutral-400 border-[1px] items-center justify-center gap-3 px-6 py-3.5 bg-white dark:bg-black text-black dark:text-white rounded-full hover:opacity-90 transition-opacity shadow-lg"
+              className="flex border-neutral-300 dark:border-neutral-400 border-[1px] items-center justify-center gap-3 px-6 py-3.5 bg-white dark:bg-black text-black dark:text-white rounded-2xl hover:opacity-90 transition-opacity shadow-lg"
             >
               <FaAndroid className="h-6 w-6" />
               <div className="flex flex-col items-start">

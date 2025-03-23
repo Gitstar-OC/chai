@@ -1,11 +1,8 @@
-
-
 "use client"
 
-import { Send } from "lucide-react"
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import { AnimatePresence, motion } from "framer-motion"
-
+import { HiOutlineSpeakerphone } from "react-icons/hi";
 import { Button } from "@/components/ui/button"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar"
@@ -15,13 +12,14 @@ export function FeedbackPopover() {
   const [open, setOpen] = useState(false)
   const [feedback, setFeedback] = useState("")
   const [formState, setFormState] = useState<"input" | "loading" | "success">("input")
-  const ref = useRef(null)
+  const textareaRef = useRef<HTMLTextAreaElement>(null)
+  const formRef = useRef<HTMLFormElement>(null)
 
   const submit = async () => {
+    if (!feedback.trim()) return
+
     setFormState("loading")
-
     await new Promise((resolve) => setTimeout(resolve, 1500))
-
     setFormState("success")
 
     setTimeout(() => {
@@ -30,8 +28,20 @@ export function FeedbackPopover() {
         setFeedback("")
         setFormState("input")
       }, 300)
-    }, 2000)
+    }, 2500)
   }
+
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === "Enter" && open && formState === "input") {
+        e.preventDefault()
+        submit()
+      }
+    }
+    document.addEventListener("keydown", handleKeyDown)
+    return () => document.removeEventListener("keydown", handleKeyDown)
+  }, [open, formState, feedback])
 
   return (
     <SidebarMenu>
@@ -42,15 +52,14 @@ export function FeedbackPopover() {
               size="md"
               className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
             >
-              <Send className="h-4 w-4 mr-2" />
+              <HiOutlineSpeakerphone className="h-4 w-4 mr-2" />
               <span className="flex-1 text-left text-sm">Feedback</span>
             </SidebarMenuButton>
           </PopoverTrigger>
-          <PopoverContent className="w-80 p-0 overflow-hidden rounded-lg border shadow-lg" align="start">
+          <PopoverContent className="w-80 p-0 overflow-hidden rounded-xl border shadow-lg" align="start">
             <AnimatePresence mode="wait">
               {open && (
                 <motion.div
-                  ref={ref}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
@@ -65,30 +74,30 @@ export function FeedbackPopover() {
                         transition={{ type: "spring", duration: 0.4, bounce: 0 }}
                         className="flex flex-col items-center justify-center gap-3 p-8"
                       >
-                        <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                        <div className="h-12 w-12 rounded-full bg-blue-50 dark:bg-blue-950/30 flex items-center justify-center">
                           <svg
-                            width="24"
-                            height="24"
+                            width="28"
+                            height="28"
                             viewBox="0 0 24 24"
                             fill="none"
                             xmlns="http://www.w3.org/2000/svg"
+                            className="text-blue-500"
                           >
                             <path
                               d="M20 6L9 17L4 12"
                               stroke="currentColor"
-                              strokeWidth="2"
+                              strokeWidth="3"
                               strokeLinecap="round"
                               strokeLinejoin="round"
                             />
                           </svg>
                         </div>
-                        <h3 className="text-lg font-medium">Thank you!</h3>
-                        <p className="text-sm text-muted-foreground text-center">
-                          Your feedback has been received and will help us improve.
-                        </p>
+                        <h3 className="text-xl font-medium">Feedback Received</h3>
+                        <p className="text-sm text-muted-foreground text-center">Thanks for helping us improve CHAI.</p>
                       </motion.div>
                     ) : (
                       <motion.form
+                        ref={formRef}
                         key="form"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
@@ -101,6 +110,7 @@ export function FeedbackPopover() {
                         }}
                       >
                         <textarea
+                          ref={textareaRef}
                           autoFocus
                           placeholder="Tell us how can we make CHAI better?"
                           value={feedback}
@@ -109,7 +119,7 @@ export function FeedbackPopover() {
                           required
                         />
 
-                        <div className="flex justify-end p-4 bg-neutral-50 dark:bg-neutral-900">
+                        <div className="flex justify-end p-4 bg-neutral-50 dark:bg-neutral-950">
                           <div className="relative group">
                             <div className="absolute -inset-0.5 bg-gradient-to-r from-indigo-500 via-purple-500 to-rose-500 rounded-md blur opacity-60 group-hover:opacity-100 transition-all duration-300"></div>
                             <Button
@@ -118,8 +128,8 @@ export function FeedbackPopover() {
                               disabled={formState === "loading"}
                               className={cn(
                                 "relative h-8 text-sm min-w-[120px]",
-                                "bg-background hover:bg-backgro dark:bg-background  dark:hover:bg-background/90 text-foreground border border-input",
-                                "transition-all duration-300 ",
+                                "bg-background hover:bg-background dark:bg-background dark:hover:bg-background/90 text-foreground border border-input",
+                                "transition-all duration-300",
                               )}
                             >
                               <AnimatePresence mode="popLayout" initial={false}>
@@ -157,7 +167,12 @@ export function FeedbackPopover() {
                                       ></path>
                                     </svg>
                                   ) : (
-                                    "Send feedback"
+                                    <>
+                                      Send feedback
+                                      {/* <span className="ml-2 opacity-60 text-xs">
+                                        {navigator.platform.includes("Mac") ? "⌘" : "Ctrl"}+Enter
+                                      </span> */}
+                                    </>
                                   )}
                                 </motion.span>
                               </AnimatePresence>

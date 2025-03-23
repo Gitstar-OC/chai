@@ -101,7 +101,7 @@ export default function ExploreBots() {
                   {category.bots.map((bot, botIndex) => (
                     <div
                       key={botIndex}
-                      className="bg-neutral-100 dark:bg-neutral-900 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden flex-shrink-0 w-72 flex"
+                      className="bg-white dark:bg-black rounded-lg shadow-md transition-shadow duration-200 overflow-hidden flex-shrink-0 w-72 flex"
                     >
                       <div className="relative w-24 flex-shrink-0">
                         <Image src={bot.image || "/placeholder.svg"} alt={bot.name} layout="fill" objectFit="cover" />
