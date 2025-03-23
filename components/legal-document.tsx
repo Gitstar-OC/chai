@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import Image from "next/image"
 import { cn } from "@/lib/utils"
 
 interface Section {
@@ -20,12 +19,12 @@ interface LegalDocumentProps {
 export function LegalDocument({ title, lastUpdated, sections }: LegalDocumentProps) {
   const [activeSection, setActiveSection] = useState<string>(sections[0]?.id || "")
 
-  // Track scroll position to update active section
+
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 100
 
-      // Find the section that is currently in view
+
       for (const section of sections) {
         const element = document.getElementById(section.id)
         if (element) {
@@ -56,26 +55,11 @@ export function LegalDocument({ title, lastUpdated, sections }: LegalDocumentPro
   return (
     <div className="min-h-screen bg-background text-foreground">
 
-      {/* <header className="border-b border-border">
-        <div className="max-w-screen-xl mx-auto px-6 py-5">
-          <Link href="/" className="inline-block">
-            <Image
-              src="https://www.chai-research.com/images/chai-logo.png"
-              alt="Chai Research"
-              width={120}
-              height={40}
-              className="h-8 w-auto"
-            />
-          </Link>
-        </div>
-      </header> */}
-
-      {/* Main Content */}
       <div className="max-w-screen-xl mx-auto px-6 py-8 lg:py-16">
         <div className="flex flex-col lg:flex-row justify-center gap-16">
-          {/* Main Content - Centered */}
+
           <main className="w-full max-w-2xl">
-            {/* Title only visible on desktop */}
+
             <div className="hidden lg:block mb-10">
               <h1 className="text-3xl font-medium mb-2">{title}</h1>
               <p className="text-sm text-muted-foreground">Last updated: {lastUpdated}</p>
@@ -92,13 +76,13 @@ export function LegalDocument({ title, lastUpdated, sections }: LegalDocumentPro
             ))}
 
             <div className="mt-16 lg:mt-24 pt-8 border-t border-border text-sm text-muted-foreground">
-              <p>© 2024 CHAI RESEARCH CORP. ALL RIGHTS RESERVED</p>
+              <p>© 2025 CHAI RESEARCH CORP. ALL RIGHTS RESERVED</p>
               <div className="flex gap-6 mt-2">
-                <Link href="/privacy-policy" className="hover:text-primary">
+                <Link href="/privacy" className="hover:text-primary">
                   Privacy Policy
                 </Link>
-                <Link href="/terms-of-service" className="hover:text-primary">
-                  EULA
+                <Link href="/terms" className="hover:text-primary">
+                  Terms of Service
                 </Link>
               </div>
             </div>
@@ -106,9 +90,6 @@ export function LegalDocument({ title, lastUpdated, sections }: LegalDocumentPro
 
           <aside className="hidden lg:block w-64 flex-shrink-0">
             <div className="sticky top-8">
-              {/* <h2 className="text-xl font-medium mb-2">{title}</h2> */}
-              {/* <p className="text-sm text-muted-foreground mb-6">Last updated: {lastUpdated}</p> */}
-
               <nav className="space-y-1 mt-20">
                 {sections.map((section) => (
                   <button

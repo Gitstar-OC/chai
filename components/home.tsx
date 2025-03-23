@@ -182,9 +182,8 @@ export default function Home() {
           </motion.div>
 
           <motion.div custom={2} variants={fadeUpVariants} initial="hidden" animate="visible">
-            <p className="text-base sm:text-lg md:text-xl text-black/60 dark:text-white/60 mb-10 leading-relaxed font-light tracking-wide max-w-2xl mx-auto px-4">
-              Our app revolutionizes the way we interact with AI chatbots. With our advanced technology, our chatbots
-              think and reply like real characters, complete with authentic voices.
+            <p className="text-base text-balance sm:text-lg md:text-xl text-black/80 dark:text-white/80 mb-10 leading-relaxed font-light tracking-wide max-w-3xl mx-auto px-4">
+              Experience the thrill of chatting with bots that think, reason, and speak just like actual people, complete with authentic voices that vividly bring every conversation to life!
             </p>
           </motion.div>
 
@@ -250,21 +249,23 @@ export default function Home() {
             </a>
           </motion.div>
         </div>
-      </div>
-
-      <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-white/80 dark:from-black dark:via-transparent dark:to-black/80 pointer-events-none" />
-
-      <div className="absolute bottom-6 left-0 right-0 text-center z-10">
+        <div className="text-center z-10">
         <div className="text-sm text-black/40 dark:text-white/40 flex justify-center space-x-4">
           <Link href="/terms" className="hover:underline hover:text-black/60 dark:hover:text-white/60 transition-colors">
             Terms of Service
           </Link>
+          <span>•</span>
+          <a href="https://www.chai-research.com/jobs/" target="_blank" className="hover:underline hover:text-black/60 dark:hover:text-white/60 transition-colors">
+            Jobs
+          </a>
           <span>•</span>
           <Link href="/privacy" className="hover:underline hover:text-black/60 dark:hover:text-white/60 transition-colors">
             Privacy Policy
           </Link>
         </div>
       </div>
+      </div>
+      <div className="inset-0 bg-gradient-to-t from-white via-transparent to-white/80 dark:from-black dark:via-transparent dark:to-black/80 pointer-events-none" />
     </div>
   )
 }
