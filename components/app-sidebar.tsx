@@ -27,21 +27,9 @@ import Link from "next/link";
 const data = {
   user: {
     name: "OC",
-    email: "oc@iamoc.com",
+    email: "oc@iamoc.me",
     avatar: "https://github.com/gitstar-oc.png",
   },
-  navSecondary: [
-    {
-      title: "Support",
-      url: "#",
-      icon: LifeBuoy,
-    },
-    {
-      title: "Feedback",
-      url: "#",
-      icon: Send,
-    },
-  ],
   projects: [
     { name: "Home", url: "/", icon: Home },
     {

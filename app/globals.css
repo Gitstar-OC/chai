@@ -151,16 +151,15 @@
 }
 
 ::-webkit-scrollbar {
-  width: 7px;
+  width: 4px;
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: transparent
 }
 
 ::-webkit-scrollbar-thumb {
   background: hsl(var(--muted-foreground));
-  border-radius: 10px;
 }
 
 
