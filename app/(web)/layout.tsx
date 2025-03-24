@@ -22,6 +22,22 @@ export const metadata: Metadata = {
     default: 'CHAI',
   },
   description: 'CHAI - AI conversation platform',
+  openGraph: {
+    images: [
+      {
+        url: 'https://chai.iamoc.me/banner.png',
+        width: 1200,
+        height: 630,
+        alt: 'CHAI - AI conversation platform',
+      }
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'CHAI',
+    description: 'CHAI - AI conversation platform',
+    images: ['https://chai.iamoc.me/banner.png'],
+  },
 };
 
 export default function RootLayout({

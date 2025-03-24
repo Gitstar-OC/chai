@@ -18,6 +18,22 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Chai - Legal",
   description: "Legal information for Chai AI Social Media Platform",
+  openGraph: {
+    images: [
+      {
+        url: 'https://chai.iamoc.me/banner.png',
+        width: 1200,
+        height: 630,
+        alt: 'Chai Legal Information',
+      }
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Chai - Legal',
+    description: 'Legal information for Chai AI Social Media Platform',
+    images: ['https://chai.iamoc.me/banner.png'],
+  },
 };
 
 export default function LegalLayout({

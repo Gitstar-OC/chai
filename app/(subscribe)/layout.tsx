@@ -16,6 +16,22 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Subscribe to CHAI Pro",
   description: "Subscribe to CHAI Pro",
+  openGraph: {
+    images: [
+      {
+        url: 'https://chai.iamoc.me/banner.png',
+        width: 1200,
+        height: 630,
+        alt: 'Subscribe to CHAI Pro',
+      }
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Subscribe to CHAI Pro',
+    description: 'Subscribe to CHAI Pro',
+    images: ['https://chai.iamoc.me/banner.png'],
+  },
 };
 
 export default function LegalLayout({
