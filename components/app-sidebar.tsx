@@ -3,8 +3,6 @@
 import type * as React from "react";
 import {
   Home,
-  LifeBuoy,
-  Send,
   Search,
   Plus,
   MessageCircle,

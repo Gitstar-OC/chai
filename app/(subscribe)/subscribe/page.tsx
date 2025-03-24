@@ -1,24 +1,25 @@
-"use client";
+"use client"
 
-import * as React from "react";
-import Link from "next/link";
-import { Check, Sparkles } from "lucide-react";
-import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import * as React from "react"
+import Link from "next/link"
+import { useRouter } from "next/navigation"
+import { Check, Sparkles, X } from "lucide-react"
+import { motion } from "framer-motion"
+import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
 
 export default function SubscriptionPage() {
-  const [billingCycle, setBillingCycle] = React.useState<"monthly" | "weekly">(
-    "monthly"
-  );
-  const tabsRef = React.useRef<HTMLDivElement>(null);
-  const monthlyTabRef = React.useRef<HTMLButtonElement>(null);
-  const weeklyTabRef = React.useRef<HTMLButtonElement>(null);
+  const router = useRouter()
+  const [billingCycle, setBillingCycle] = React.useState<"monthly" | "weekly">("monthly")
+  const tabsRef = React.useRef<HTMLDivElement>(null)
+  const monthlyTabRef = React.useRef<HTMLButtonElement>(null)
+  const [referrerIsEmpty, setReferrerIsEmpty] = React.useState(true);
+  const weeklyTabRef = React.useRef<HTMLButtonElement>(null)
   const [indicatorStyle, setIndicatorStyle] = React.useState({
     left: 0,
     width: 0,
-  });
-  const [isLoaded, setIsLoaded] = React.useState(false);
+  })
+  const [isLoaded, setIsLoaded] = React.useState(false)
 
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
@@ -30,56 +31,79 @@ export default function SubscriptionPage() {
         ease: [0.23, 0.86, 0.39, 0.96],
       },
     },
-  };
+  }
 
-  
+
+React.useEffect(() => {
+
+  setReferrerIsEmpty(!document.referrer);
+}, []);
+
+const handleGoBack = () => {
+  if (referrerIsEmpty) {
+    router.push("/");
+  } else {
+    router.back();
+  }
+}
+
   const updateIndicator = React.useCallback(() => {
-    const activeTab =
-      billingCycle === "monthly" ? monthlyTabRef.current : weeklyTabRef.current;
-    if (!activeTab || !tabsRef.current) return;
+    const activeTab = billingCycle === "monthly" ? monthlyTabRef.current : weeklyTabRef.current
+    if (!activeTab || !tabsRef.current) return
 
-    const tabRect = activeTab.getBoundingClientRect();
-    const containerRect = tabsRef.current.getBoundingClientRect();
+    const tabRect = activeTab.getBoundingClientRect()
+    const containerRect = tabsRef.current.getBoundingClientRect()
 
     setIndicatorStyle({
       left: tabRect.left - containerRect.left,
       width: tabRect.width,
-    });
+    })
 
     if (!isLoaded) {
-      setIsLoaded(true);
+      setIsLoaded(true)
     }
-  }, [billingCycle, isLoaded]);
+  }, [billingCycle, isLoaded])
 
-  
   React.useEffect(() => {
-
     const timer = setTimeout(() => {
-      updateIndicator();
-    }, 0);
+      updateIndicator()
+    }, 0)
 
-
-    window.addEventListener("resize", updateIndicator);
+    window.addEventListener("resize", updateIndicator)
 
     return () => {
-      clearTimeout(timer);
-      window.removeEventListener("resize", updateIndicator);
-    };
-  }, [updateIndicator]);
-
+      clearTimeout(timer)
+      window.removeEventListener("resize", updateIndicator)
+    }
+  }, [updateIndicator])
 
   React.useEffect(() => {
-    updateIndicator();
-  }, [billingCycle, updateIndicator]);
+    updateIndicator()
+  }, [billingCycle, updateIndicator])
 
   const handleTabChange = (cycle: "monthly" | "weekly") => {
-    if (cycle === billingCycle) return;
-    setBillingCycle(cycle);
-  };
+    if (cycle === billingCycle) return
+    setBillingCycle(cycle)
+  }
+
+  // const handleGoBack = () => {
+  //   router.back()
+  // }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-background to-background py-8">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-background to-background py-8 relative">
       <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/[0.02] via-transparent to-rose-500/[0.02] pointer-events-none" />
+
+      <motion.button
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.2 }}
+        onClick={handleGoBack}
+        className="absolute top-4 right-4 sm:top-6 sm:right-6 z-50 p-2 rounded-full bg-white/80 dark:bg-black/50 hover:bg-white dark:hover:bg-black/70 shadow-sm border border-neutral-200 dark:border-neutral-800 transition-all duration-200"
+        aria-label="Go back"
+      >
+        <X className="h-5 w-5 text-neutral-700 dark:text-neutral-300" />
+      </motion.button>
 
       <motion.div
         className="container max-w-4xl px-6 py-8"
@@ -95,25 +119,16 @@ export default function SubscriptionPage() {
         }}
       >
         <div className="mb-8 text-center">
-          <motion.h1
-            variants={fadeIn}
-            className="text-3xl sm:text-4xl font-bold mb-3 text-foreground"
-          >
+          <motion.h1 variants={fadeIn} className="text-3xl sm:text-4xl font-bold mb-3 text-foreground">
             Upgrade Your Experience
           </motion.h1>
-          <motion.p
-            variants={fadeIn}
-            className="text-base text-muted-foreground max-w-2xl mx-auto"
-          >
+          <motion.p variants={fadeIn} className="text-base text-muted-foreground max-w-2xl mx-auto">
             Choose the plan that works best for you
           </motion.p>
         </div>
 
         <div className="flex flex-col gap-8">
-          <motion.div
-            variants={fadeIn}
-            className="flex items-center justify-center"
-          >
+          <motion.div variants={fadeIn} className="flex items-center justify-center">
             <div
               ref={tabsRef}
               className="relative w-full max-w-xs p-1.5 rounded-full bg-neutral-100 dark:bg-neutral-900 shadow-inner"
@@ -121,14 +136,13 @@ export default function SubscriptionPage() {
               <div
                 className={cn(
                   "absolute top-1.5 bottom-1.5 rounded-full bg-black dark:bg-white transition-all duration-300 ease-out",
-                  isLoaded ? "opacity-100" : "opacity-0"
+                  isLoaded ? "opacity-100" : "opacity-0",
                 )}
                 style={{
                   left: `${indicatorStyle.left}px`,
                   width: `${indicatorStyle.width}px`,
                 }}
               />
-
 
               <div className="relative flex w-full">
                 <button
@@ -140,7 +154,7 @@ export default function SubscriptionPage() {
                     "flex-1 py-2 px-4 text-sm font-medium rounded-full relative z-10 transition-colors duration-200",
                     billingCycle === "monthly"
                       ? "text-white dark:text-black"
-                      : "text-neutral-600 dark:text-neutral-400"
+                      : "text-neutral-600 dark:text-neutral-400",
                   )}
                 >
                   Monthly
@@ -155,9 +169,7 @@ export default function SubscriptionPage() {
                   onClick={() => handleTabChange("weekly")}
                   className={cn(
                     "flex-1 py-2 px-4 text-sm font-medium rounded-full relative z-10 transition-colors duration-200",
-                    billingCycle === "weekly"
-                      ? "text-white dark:text-black"
-                      : "text-neutral-600 dark:text-neutral-400"
+                    billingCycle === "weekly" ? "text-white dark:text-black" : "text-neutral-600 dark:text-neutral-400",
                   )}
                 >
                   Weekly
@@ -166,20 +178,12 @@ export default function SubscriptionPage() {
             </div>
           </motion.div>
 
-          <motion.div
-            variants={fadeIn}
-            className="grid grid-cols-1 md:grid-cols-2 gap-5"
-          >
+          <motion.div variants={fadeIn} className="grid grid-cols-1 md:grid-cols-2 gap-5">
             <PlanCard
               name="premium"
               price={billingCycle === "monthly" ? "$13.99" : "$4.99"}
               cycle={billingCycle === "monthly" ? "month" : "week"}
-              features={[
-                "Unlimited messages",
-                "Unlimited bots",
-                "Access to Web",
-                "No ads",
-              ]}
+              features={["Unlimited messages", "Unlimited bots", "Access to Web", "No ads"]}
             />
             <PlanCard
               name="ultra"
@@ -198,17 +202,11 @@ export default function SubscriptionPage() {
             />
           </motion.div>
 
-          <motion.div
-            variants={fadeIn}
-            className="text-center text-sm text-muted-foreground flex flex-col gap-1.5"
-          >
+          <motion.div variants={fadeIn} className="text-center text-sm text-muted-foreground flex flex-col gap-1.5">
             <p>All plans include a 7-day free trial. Cancel anytime.</p>
             <p>
               Need help?{" "}
-              <Link
-                href="/help"
-                className="text-indigo-600 dark:text-indigo-400 hover:underline font-medium"
-              >
+              <Link href="/help" className="text-indigo-600 dark:text-indigo-400 hover:underline font-medium">
                 Contact our support team
               </Link>
             </p>
@@ -216,7 +214,7 @@ export default function SubscriptionPage() {
         </div>
       </motion.div>
     </div>
-  );
+  )
 }
 
 function PlanCard({
@@ -226,11 +224,11 @@ function PlanCard({
   features,
   highlighted = false,
 }: {
-  name: string;
-  price: string;
-  cycle: string;
-  features: string[];
-  highlighted?: boolean;
+  name: string
+  price: string
+  cycle: string
+  features: string[]
+  highlighted?: boolean
 }) {
   return (
     <motion.div
@@ -239,7 +237,7 @@ function PlanCard({
         "flex flex-col p-5 sm:p-6 rounded-xl border transition-all duration-300 h-full justify-between",
         highlighted
           ? "border-indigo-200 bg-gradient-to-br from-indigo-50/50 to-rose-50/30 dark:border-indigo-800/40 dark:from-indigo-950/30 dark:to-rose-950/20 shadow-md"
-          : "border-border bg-white/40 dark:bg-black/20 hover:bg-white/60 dark:hover:bg-black/30 shadow-sm"
+          : "border-border bg-white/40 dark:bg-black/20 hover:bg-white/60 dark:hover:bg-black/30 shadow-sm",
       )}
     >
       <div className="mb-6 relative">
@@ -260,7 +258,7 @@ function PlanCard({
               "text-xl sm:text-2xl font-bold capitalize",
               highlighted
                 ? "bg-gradient-to-r from-indigo-700 to-rose-600 dark:from-indigo-400 dark:to-rose-400 bg-clip-text text-transparent"
-                : ""
+                : "",
             )}
           >
             {name}
@@ -310,24 +308,15 @@ function PlanCard({
             <div
               className={cn(
                 "flex-shrink-0 h-5 w-5 rounded-full flex items-center justify-center mr-2.5 mt-0.5",
-                highlighted
-                  ? "bg-gradient-to-br from-indigo-500 to-rose-500"
-                  : "bg-neutral-200 dark:bg-neutral-800"
+                highlighted ? "bg-gradient-to-br from-indigo-500 to-rose-500" : "bg-neutral-200 dark:bg-neutral-800",
               )}
             >
-              <Check
-                className={cn(
-                  "h-3 w-3",
-                  highlighted
-                    ? "text-white"
-                    : "text-neutral-700 dark:text-neutral-300"
-                )}
-              />
+              <Check className={cn("h-3 w-3", highlighted ? "text-white" : "text-neutral-700 dark:text-neutral-300")} />
             </div>
             <span className="text-sm sm:text-base">{feature}</span>
           </motion.li>
         ))}
       </ul>
     </motion.div>
-  );
+  )
 }
