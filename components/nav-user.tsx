@@ -8,9 +8,9 @@ import {
   Sun,
   FileText,
   Shield,
-  Sparkles,
 } from "lucide-react"
 import { useTheme } from "next-themes"
+import { SubscribeButton } from "@/components/subscribe-button"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import {
@@ -77,10 +77,7 @@ export function NavUser({
               <DropdownMenuSeparator />
               <DropdownMenuGroup>
               <DropdownMenuItem asChild className="cursor-pointer">
-                  <a href="/subscribe">
-                    <Sparkles className="mr-2 h-4 w-4" />
-                    <span>Upgrade to Pro</span>
-                  </a>
+                  <SubscribeButton/>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild className="cursor-pointer">
                   <a href="/terms">

@@ -17,8 +17,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Chai Web ",
-  description: "Web App of Chai the AI Social Media Platform",
+  title: {
+    template: '%s / CHAI',
+    default: 'CHAI',
+  },
+  description: 'CHAI - AI conversation platform',
 };
 
 export default function RootLayout({

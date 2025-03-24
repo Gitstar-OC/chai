@@ -86,10 +86,6 @@ const handleGoBack = () => {
     setBillingCycle(cycle)
   }
 
-  // const handleGoBack = () => {
-  //   router.back()
-  // }
-
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-background to-background py-8 relative">
       <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/[0.02] via-transparent to-rose-500/[0.02] pointer-events-none" />
