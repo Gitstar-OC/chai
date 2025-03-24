@@ -41,18 +41,18 @@ export function FeedbackPopover() {
     }
     document.addEventListener("keydown", handleKeyDown)
     return () => document.removeEventListener("keydown", handleKeyDown)
-  }, [open, formState, feedback ])
+  }, [open, formState, feedback])
 
   return (
     <SidebarMenu>
       <SidebarMenuItem>
         <Popover open={open} onOpenChange={setOpen}>
           <PopoverTrigger asChild>
-            <SidebarMenuButton
-              className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
-            >
-              <HiOutlineSpeakerphone className="h-4 w-4 mr-2" />
-              <span className="flex-1 text-left text-sm">Feedback</span>
+            <SidebarMenuButton className="relative overflow-hidden data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground data-[state=open]:shadow-[inset_0_2px_10px_rgba(168,85,247,0.35)]">
+              <div className="absolute inset-0 opacity-0 data-[state=open]:opacity-20 bg-gradient-to-r from-indigo-500 via-purple-500 to-rose-500 pointer-events-none transition-opacity duration-300" />
+
+              <HiOutlineSpeakerphone className="h-4 w-4 mr-2 relative z-10" />
+              <span className="flex-1 text-left text-sm relative z-10">Feedback</span>
             </SidebarMenuButton>
           </PopoverTrigger>
           <PopoverContent className="w-80 p-0 overflow-hidden rounded-xl border shadow-lg" align="start">
@@ -188,7 +188,7 @@ export function FeedbackPopover() {
   )
 }
 
-{/* Different Tick with red and blue as bg shadow */}
+{/* Different Tick with red and blue as bg shadow */ }
 
 // <div className="relative group">
 // <div className="absolute -inset-0.5 bg-gradient-to-r from-indigo-500 via-purple-500 to-rose-500 rounded-full blur opacity-75"></div>

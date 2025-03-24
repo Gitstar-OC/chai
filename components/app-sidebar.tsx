@@ -20,6 +20,7 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar";
 import { FeedbackPopover } from "./feedback-popover";
+import { SubscribeButton } from "./subscribe-button";
 import Link from "next/link";
 
 const data = {
@@ -56,7 +57,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarHeader>
         <SidebarMenu>
           <div className="flex items-center w-full relative">
-            
+
             <div className="w-[40px] h-[40px] flex-shrink-0">
               <Link href="/">
                 <Image
@@ -69,11 +70,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 />
               </Link>
             </div>
-
-
             <div className="flex-grow"></div>
-
-
             <div className="flex-shrink-0">
               {state === "expanded" && (
                 <SidebarTrigger className="w-10 h-10 z-10" />
@@ -86,13 +83,16 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
-      <div className="border-t-[1px] mt-4 border-neutral-200 dark:border-neutral-800" />
+        <div className="border-t-[1px] mt-4 border-neutral-200 dark:border-neutral-800" />
         <NavProjects projects={data.projects} />
       </SidebarContent>
       <SidebarFooter>
+        <SubscribeButton />
         <FeedbackPopover />
         <NavUser user={data.user} />
       </SidebarFooter>
     </Sidebar>
   );
 }
+
+
